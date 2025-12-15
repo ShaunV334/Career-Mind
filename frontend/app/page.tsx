@@ -135,6 +135,14 @@ export default function Home() {
                 </a>
               </li>
             </ul>
+            <div className="hidden md:flex items-center">
+              <button
+                onClick={() => setAuthModalOpen(true)}
+                className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-medium transition-all"
+              >
+                Login / Sign Up
+              </button>
+            </div>
           </div>
         </div>
       </nav>

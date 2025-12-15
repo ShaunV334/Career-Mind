@@ -221,10 +221,10 @@ export default function Home() {
               <h3 className="text-xl font-bold text-gray-900 mb-2">Mock Interviews</h3>
               <p className="text-gray-600">Practice with AI-powered mock interviews tailored to your industry.</p>
             </div>
-            <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+            <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" onClick={() => router.push("/modules/resume")}>
               <div className="text-4xl font-bold text-indigo-600 mb-4">📄</div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Resume Builder</h3>
-              <p className="text-gray-600">Create professional resumes with AI assistance and templates.</p>
+              <p className="text-gray-600">Create professional ATS-friendly resumes — fill details and download as PDF.</p>
             </div>
             <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
               <div className="text-4xl font-bold text-blue-500 mb-4">🎯</div>

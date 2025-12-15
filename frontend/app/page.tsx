@@ -216,6 +216,11 @@ export default function Home() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Group Discussion</h3>
                 <p className="text-gray-600">Join live discussions to collaborate and share insights with peers.</p>
               </div>
+              <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" onClick={() => router.push("/modules/weeklyTask")}>
+                <div className="text-4xl font-bold text-green-600 mb-4">🗓️</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Weekly Tasks</h3>
+                <p className="text-gray-600">Track and complete weekly preparation tasks to stay consistent.</p>
+              </div>
             <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
               <div className="text-4xl font-bold text-blue-600 mb-4">🎤</div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Mock Interviews</h3>

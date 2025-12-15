@@ -241,6 +241,12 @@ export default function Home() {
               <h3 className="text-xl font-bold text-gray-900 mb-2">Outfit Analysis</h3>
               <p className="text-gray-600">Get fashion advice for professional settings and interviews.</p>
             </div>
+
+            <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" onClick={() => router.push("/modules/questionBank")}>
+              <div className="text-4xl font-bold text-purple-600 mb-4">📚</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Question Bank</h3>
+              <p className="text-gray-600">Access a curated collection of question banks for various topics and practice sets.</p>
+            </div>
           </div>
         </div>
       </section>

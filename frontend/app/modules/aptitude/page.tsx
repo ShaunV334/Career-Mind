@@ -113,13 +113,13 @@ export default function AptitudeModule() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="shrink-0">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-800 to-amber-700 bg-clip-text text-transparent">
                 CareerMind
               </h1>
             </div>
             <button
-              onClick={() => router.back()}
-              className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
+              onClick={() => router.push('/features')}
+              className="flex items-center gap-2 text-gray-700 hover:text-rose-800 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="font-medium">Back</span>
@@ -135,7 +135,7 @@ export default function AptitudeModule() {
           {!testStarted ? (
             <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
               <div className="mb-8">
-                <BookOpen className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+                <BookOpen className="w-16 h-16 text-rose-800 mx-auto mb-4" />
                 <h1 className="text-4xl font-bold text-gray-900 mb-4">
                   Aptitude Test
                 </h1>
@@ -145,20 +145,20 @@ export default function AptitudeModule() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-blue-50 rounded-lg p-6">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">
+                <div className="bg-rose-50 rounded-lg p-6">
+                  <div className="text-3xl font-bold text-rose-800 mb-2">
                     {aptitudeQuestions.length}
                   </div>
                   <p className="text-gray-600">Questions</p>
                 </div>
-                <div className="bg-indigo-50 rounded-lg p-6">
-                  <div className="text-3xl font-bold text-indigo-600 mb-2">
+                <div className="bg-amber-50 rounded-lg p-6">
+                  <div className="text-3xl font-bold text-amber-700 mb-2">
                     10 min
                   </div>
                   <p className="text-gray-600">Time Limit</p>
                 </div>
-                <div className="bg-purple-50 rounded-lg p-6">
-                  <div className="text-3xl font-bold text-purple-600 mb-2">
+                <div className="bg-amber-50 rounded-lg p-6">
+                  <div className="text-3xl font-bold text-amber-600 mb-2">
                     100%
                   </div>
                   <p className="text-gray-600">Score Target</p>
@@ -171,7 +171,7 @@ export default function AptitudeModule() {
 
               <Button
                 onClick={() => setTestStarted(true)}
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-12 py-3 h-auto text-lg"
+                className="bg-gradient-to-r from-rose-800 to-amber-700 hover:from-rose-500 hover:to-amber-800 text-white px-12 py-3 h-auto text-lg"
               >
                 Start Test
               </Button>
@@ -188,7 +188,7 @@ export default function AptitudeModule() {
                     </p>
                   </div>
                   <div className="flex items-center gap-2 text-gray-700 font-bold">
-                    <Clock className="w-5 h-5 text-blue-600" />
+                    <Clock className="w-5 h-5 text-rose-800" />
                     <span className={timeLeft < 60 ? "text-red-600" : ""}>
                       {formatTime(timeLeft)}
                     </span>
@@ -196,7 +196,7 @@ export default function AptitudeModule() {
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
-                    className="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-300"
+                    className="bg-gradient-to-r from-rose-800 to-amber-700 h-2 rounded-full transition-all duration-300"
                     style={{
                       width: `${((currentQuestion + 1) / aptitudeQuestions.length) * 100}%`,
                     }}
@@ -225,7 +225,7 @@ export default function AptitudeModule() {
                           : answered &&
                             index === aptitudeQuestions[currentQuestion].correctAnswer
                           ? "border-green-500 bg-green-50"
-                          : "border-gray-200 hover:border-blue-400 hover:bg-blue-50"
+                          : "border-gray-200 hover:border-rose-400 hover:bg-rose-50"
                       } ${answered ? "cursor-default" : "cursor-pointer"}`}
                     >
                       <div className="flex items-center gap-3">
@@ -256,9 +256,9 @@ export default function AptitudeModule() {
 
               {/* EXPLANATION */}
               {answered && (
-                <div className="mb-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <p className="text-sm font-semibold text-blue-900 mb-1">Explanation:</p>
-                  <p className="text-blue-800">
+                <div className="mb-8 p-4 bg-rose-50 rounded-lg border border-rose-200">
+                  <p className="text-sm font-semibold text-rose-900 mb-1">Explanation:</p>
+                  <p className="text-rose-800">
                     {aptitudeQuestions[currentQuestion].explanation}
                   </p>
                 </div>
@@ -268,7 +268,7 @@ export default function AptitudeModule() {
               {answered && (
                 <Button
                   onClick={handleNext}
-                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white h-12"
+                  className="w-full bg-gradient-to-r from-rose-800 to-amber-700 hover:from-rose-900 hover:to-amber-800 text-white h-12"
                 >
                   {currentQuestion === aptitudeQuestions.length - 1 ? "Finish Test" : "Next Question"}
                 </Button>
@@ -278,7 +278,7 @@ export default function AptitudeModule() {
             // RESULTS SCREEN
             <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
               <div className="mb-8">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center mx-auto mb-6">
+                <div className="w-32 h-32 rounded-full bg-gradient-to-r from-rose-800 to-amber-700 flex items-center justify-center mx-auto mb-6">
                   <div className="text-5xl font-bold text-white">{percentage}%</div>
                 </div>
                 <h1 className="text-4xl font-bold text-gray-900 mb-2">
@@ -297,8 +297,8 @@ export default function AptitudeModule() {
                   </div>
                 )}
                 {percentage >= 60 && percentage < 80 && (
-                  <div className="inline-block bg-blue-100 border border-blue-300 rounded-lg px-6 py-3 mb-4">
-                    <p className="text-blue-800 font-semibold">👍 Good Job!</p>
+                  <div className="inline-block bg-rose-100 border border-rose-300 rounded-lg px-6 py-3 mb-4">
+                    <p className="text-rose-800 font-semibold">👍 Good Job!</p>
                   </div>
                 )}
                 {percentage < 60 && (
@@ -312,13 +312,13 @@ export default function AptitudeModule() {
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-gray-50 rounded-lg p-6">
                   <p className="text-gray-600 mb-2">Time Taken</p>
-                  <p className="text-3xl font-bold text-blue-600">
+                  <p className="text-3xl font-bold text-rose-800">
                     {formatTime(600 - timeLeft)}
                   </p>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-6">
                   <p className="text-gray-600 mb-2">Accuracy</p>
-                  <p className="text-3xl font-bold text-indigo-600">{percentage}%</p>
+                  <p className="text-3xl font-bold text-amber-700">{percentage}%</p>
                 </div>
               </div>
 
@@ -334,12 +334,12 @@ export default function AptitudeModule() {
                     setSelectedAnswer(null);
                     setTimeLeft(600);
                   }}
-                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 h-auto"
+                  className="bg-gradient-to-r from-rose-800 to-amber-700 hover:from-rose-900 hover:to-amber-800 text-white px-8 py-3 h-auto"
                 >
                   Retake Test
                 </Button>
                 <Button
-                  onClick={() => router.back()}
+                  onClick={() => router.push('/')}
                   className="bg-gray-200 hover:bg-gray-300 text-gray-900 px-8 py-3 h-auto"
                 >
                   Back to Home

@@ -14,6 +14,7 @@ export default function Home() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Navbar scroll effect
   useEffect(() => {
@@ -83,7 +84,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
           <div className="shrink-0">
-              <a href="#" className="text-2xl font-bold text-linear-to-r from-blue-600 to-indigo-600">
+              <a href="#" className={`text-2xl font-bold transition-colors duration-300 ${navScrolled ? "text-rose-900" : "text-white"}`}>
                 CareerMind
               </a>
             </div>
@@ -101,188 +102,134 @@ export default function Home() {
             </div>
 
             {/* Nav Menu */}
-            <ul className={`hidden md:flex gap-8 items-center ${navActive ? "flex flex-col absolute top-16 left-0 right-0 bg-white shadow-lg p-4 gap-4" : ""}`}>
-              <li>
-                <a
-                  className={`cursor-pointer font-medium transition-colors ${activeSection === "" ? "text-blue-600" : "text-gray-700 hover:text-blue-600"}`}
-                  onClick={() => scrollToSection("#home")}
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  className={`cursor-pointer font-medium transition-colors ${activeSection === "about" ? "text-blue-600" : "text-gray-700 hover:text-blue-600"}`}
-                  onClick={() => scrollToSection("#about")}
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  className={`cursor-pointer font-medium transition-colors ${activeSection === "features" ? "text-blue-600" : "text-gray-700 hover:text-blue-600"}`}
-                  onClick={() => scrollToSection("#features")}
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  className={`cursor-pointer font-medium transition-colors ${activeSection === "contact" ? "text-blue-600" : "text-gray-700 hover:text-blue-600"}`}
-                  onClick={() => scrollToSection("#contact")}
-                >
-                  Contact
-                </a>
-              </li>
+            <ul className={`hidden md:flex gap-8 items-center ${navActive ? "flex flex-col absolute top-16 left-0 right-0 bg-slate-800 shadow-lg p-4 gap-4" : ""}`}>
+              {!isLoggedIn && (
+                <li>
+                  <a
+                    className={`cursor-pointer font-medium transition-colors ${activeSection === "" ? "text-rose-800" : "text-gray-300 hover:text-rose-800"}`}
+                    onClick={() => scrollToSection("#home")}
+                  >
+                    Home
+                  </a>
+                </li>
+              )}
+              {isLoggedIn && (
+                <>
+                  <li>
+                    <a
+                      className={`cursor-pointer font-medium transition-colors ${activeSection === "features" ? "text-rose-800" : "text-gray-300 hover:text-rose-800"}`}
+                      onClick={() => scrollToSection("#features")}
+                    >
+                      Features
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className={`cursor-pointer font-medium transition-colors ${activeSection === "contact" ? "text-rose-800" : "text-gray-300 hover:text-rose-800"}`}
+                      onClick={() => scrollToSection("#contact")}
+                    >
+                      Contact
+                    </a>
+                  </li>
+                </>
+              )}
             </ul>
             <div className="hidden md:flex items-center">
-              <button
-                onClick={() => setAuthModalOpen(true)}
-                className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-medium transition-all"
-              >
-                Login / Sign Up
-              </button>
+              {isLoggedIn ? (
+                <button
+                  onClick={() => setIsLoggedIn(false)}
+                  className="px-4 py-2 bg-gradient-to-r from-rose-800 to-amber-700 hover:from-rose-900 hover:to-amber-800 text-white rounded-lg font-medium transition-all"
+                >
+                  Logout
+                </button>
+              ) : (
+                <button
+                  onClick={() => setAuthModalOpen(true)}
+                  className="px-4 py-2 bg-gradient-to-r from-rose-800 to-amber-700 hover:from-rose-900 hover:to-amber-800 text-white rounded-lg font-medium transition-all"
+                >
+                  Login / Sign Up
+                </button>
+              )}
             </div>
           </div>
         </div>
       </nav>
 
-      {/* HERO SECTION */}
-      <section id="home" className="pt-32 pb-20 px-4 bg-linear-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center">
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="flex flex-col justify-center">
-              <h1>Transform Your Career Journey With...</h1>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-                <span className="text-linear-to-r from-blue-600 to-indigo-600"> CareerMind</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                Your AI Placement Trainer 
-              </p>
-              <Button
-                onClick={() => setAuthModalOpen(true)}
-                className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white h-12 w-fit text-lg"
-              >
-                Get Started
-              </Button>
-            </div>
-            <div className="hidden md:flex justify-center">
-              <img
-                src="images/p2.jpg"
-                alt="Hero"
-                className="w-full max-w-md rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="about-text">
-              <h2 className="text-4xl font-bold mb-6 text-gray-900">About CareerMind</h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                CareerMind is your personalised AI-driven platform designed to help
-                students, job seekers, and professionals grow smarter and faster.
-                We combine cutting-edge AI technology with career coaching expertise
-                to accelerate your professional growth.
-              </p>
-            </div>
-            <div className="about-image flex justify-center">
-              <img
-                src="images/p5.jpg"
-                alt="About"
-                className="w-full max-w-md rounded-lg shadow-lg"
-              />
+      {/* HOME PAGE - VISIBLE ONLY WHEN NOT LOGGED IN */}
+      {!isLoggedIn && (
+        <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-gray-900 to-slate-800 min-h-screen flex items-center">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="flex flex-col justify-center">
+                <h1 className="text-white">Transform Your Career Journey With...</h1>
+                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+                  <span className="text-linear-to-r from-rose-800 to-amber-700"> CareerMind</span>
+                </h1>
+                <p className="text-xl text-gray-300 mb-8">
+                  Your AI Placement Trainer 
+                </p>
+                <Button
+                  onClick={() => setAuthModalOpen(true)}
+                  className="bg-linear-to-r from-rose-800 to-amber-700 hover:from-rose-900 hover:to-amber-800 text-white h-12 w-fit text-lg"
+                >
+                  Get Started
+                </Button>
+              </div>
+              <div className="hidden md:flex justify-center">
+                <img
+                  src="images/p2.jpg"
+                  alt="Hero"
+                  className="w-full max-w-md rounded-lg shadow-xl"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* FEATURES */}
-      <section id="features" className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">What We Offer</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" onClick={() => router.push("/modules/aptitude")}>
-              <div className="text-4xl font-bold text-cyan-600 mb-4">📊</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Aptitude Test</h3>
-              <p className="text-gray-600">Test your quantitative reasoning and analytical skills with our curated questions.</p>
-            </div>
-              <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" onClick={() => router.push("/modules/groupDiscussion")}>
-                <div className="text-4xl font-bold text-purple-600 mb-4">💬</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Group Discussion</h3>
-                <p className="text-gray-600">Join live discussions to collaborate and share insights with peers.</p>
-              </div>
-              <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" onClick={() => router.push("/modules/weeklyTask")}>
-                <div className="text-4xl font-bold text-green-600 mb-4">🗓️</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Weekly Tasks</h3>
-                <p className="text-gray-600">Track and complete weekly preparation tasks to stay consistent.</p>
-              </div>
-            <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-              <div className="text-4xl font-bold text-blue-600 mb-4">🎤</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Mock Interviews</h3>
-              <p className="text-gray-600">Practice with AI-powered mock interviews tailored to your industry.</p>
-            </div>
-            <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" onClick={() => router.push("/modules/resume")}>
-              <div className="text-4xl font-bold text-indigo-600 mb-4">📄</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Resume Builder</h3>
-              <p className="text-gray-600">Create professional ATS-friendly resumes — fill details and download as PDF.</p>
-            </div>
-            <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-              <div className="text-4xl font-bold text-blue-500 mb-4">🎯</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Interview Prep</h3>
-              <p className="text-gray-600">Get personalized tips and strategies for interview success.</p>
-            </div>
-            <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-              <div className="text-4xl font-bold text-purple-600 mb-4">👔</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Outfit Analysis</h3>
-              <p className="text-gray-600">Get fashion advice for professional settings and interviews.</p>
-            </div>
-
-            <div className="feature-card bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer" onClick={() => router.push("/modules/questionBank")}>
-              <div className="text-4xl font-bold text-purple-600 mb-4">📚</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Question Bank</h3>
-              <p className="text-gray-600">Access a curated collection of question banks for various topics and practice sets.</p>
-            </div>
-          </div>
+      {isLoggedIn && (
+        <div className="flex items-center justify-center min-h-screen">
+          <script>
+            {typeof window !== 'undefined' && window.location.replace('/features')}
+          </script>
         </div>
-      </section>
+      )}
 
       {/* CONTACT */}
-      <section id="contact" className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6 text-gray-900">Contact Us</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Have questions? Reach out to our team.
-          </p>
-          <a href="mailto:careermind@gmail.com" className="inline-block">
-            <Button className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white h-12 text-lg">
-              Email us at careermind@gmail.com
-            </Button>
-          </a>
-        </div>
-      </section>
+      {isLoggedIn && (
+        <section id="contact" className="py-20 px-4 bg-gray-900">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6 text-white">Contact Us</h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Have questions? Reach out to our team.
+            </p>
+            <a href="mailto:careermind@gmail.com" className="inline-block">
+              <Button className="bg-linear-to-r from-rose-800 to-amber-700 hover:from-rose-900 hover:to-amber-800 text-white h-12 text-lg">
+                Email us at careermind@gmail.com
+              </Button>
+            </a>
+          </div>
+        </section>
+      )}
 
       {/* AUTH MODAL */}
       {authModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+          <div className="bg-slate-800 rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
             <div className="p-8">
               <div className="flex justify-between items-center mb-6">
-                <h1 className="text-3xl font-bold text-linear-to-r from-blue-600 to-indigo-600">
+                <h1 className="text-3xl font-bold text-linear-to-r from-rose-800 to-amber-700">
                   CareerMind
                 </h1>
                 <button
                   onClick={() => setAuthModalOpen(false)}
-                  className="text-2xl text-gray-500 hover:text-gray-700"
+                  className="text-2xl text-gray-400 hover:text-gray-200"
                 >
                   ✕
                 </button>
               </div>
-              <p className="text-center text-gray-600 mb-8">
+              <p className="text-center text-gray-300 mb-8">
                 Your AI-powered career growth companion
               </p>
 
@@ -298,11 +245,13 @@ export default function Home() {
                     className="space-y-6"
                     onSubmit={(e) => {
                       e.preventDefault();
-                      alert("Logging in…");
+                      setIsLoggedIn(true);
+                      setAuthModalOpen(false);
+                      alert("Logged in successfully!");
                     }}
                   >
                     <div className="space-y-2">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-gray-300">
                         Email
                       </label>
                       <Input
@@ -314,7 +263,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-gray-300">
                         Password
                       </label>
                       <Input
@@ -325,7 +274,7 @@ export default function Home() {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 h-11">
+                    <Button type="submit" className="w-full bg-linear-to-r from-rose-800 to-amber-700 hover:from-rose-900 hover:to-amber-800 h-11">
                       Login
                     </Button>
                   </form>
@@ -337,11 +286,13 @@ export default function Home() {
                     className="space-y-6"
                     onSubmit={(e) => {
                       e.preventDefault();
-                      alert("Account created!");
+                      setIsLoggedIn(true);
+                      setAuthModalOpen(false);
+                      alert("Account created successfully!");
                     }}
                   >
                     <div className="space-y-2">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-gray-300">
                         Full Name
                       </label>
                       <Input
@@ -353,7 +304,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-gray-300">
                         Email
                       </label>
                       <Input
@@ -365,7 +316,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-gray-300">
                         Password
                       </label>
                       <Input
@@ -377,7 +328,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-gray-300">
                         Confirm Password
                       </label>
                       <Input
@@ -388,7 +339,7 @@ export default function Home() {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 h-11">
+                    <Button type="submit" className="w-full bg-linear-to-r from-rose-800 to-amber-700 hover:from-rose-900 hover:to-amber-800 h-11">
                       Create Account
                     </Button>
                   </form>

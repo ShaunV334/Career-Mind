@@ -139,13 +139,13 @@ export default function ResumeBuilder() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="shrink-0">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-800 to-amber-700 bg-clip-text text-transparent">
                 CareerMind
               </h1>
             </div>
             <button
-              onClick={() => router.back()}
-              className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
+              onClick={() => router.push('/features')}
+              className="flex items-center gap-2 text-gray-700 hover:text-rose-800 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="font-medium">Back</span>
@@ -158,7 +158,7 @@ export default function ResumeBuilder() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="flex items-center gap-4 mb-6">
-              <FileText className="w-10 h-10 text-blue-600" />
+              <FileText className="w-10 h-10 text-rose-800" />
               <h2 className="text-2xl font-bold text-gray-900">Resume Builder (ATS Friendly)</h2>
             </div>
 
@@ -183,7 +183,7 @@ export default function ResumeBuilder() {
               <textarea name="skills" value={form.skills} onChange={handleChange} placeholder="Skills (comma separated)" className="p-3 border rounded-lg h-24" />
 
               <div className="flex gap-4 mt-4">
-                <Button type="submit" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">Generate Resume</Button>
+                <Button type="submit" className="bg-gradient-to-r from-rose-800 to-amber-700 text-white">Generate Resume</Button>
                 {generated && (
                   <Button onClick={generatePDF} className="bg-gray-200 text-gray-900">Download PDF</Button>
                 )}

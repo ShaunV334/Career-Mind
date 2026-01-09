@@ -38,9 +38,9 @@ export default function WeeklyTaskModule() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="shrink-0">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">CareerMind</h1>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-800 to-amber-700 bg-clip-text text-transparent">CareerMind</h1>
             </div>
-            <button onClick={() => router.back()} className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors">
+            <button onClick={() => router.back()} className="flex items-center gap-2 text-gray-700 hover:text-rose-800 transition-colors">
               <ArrowLeft className="w-5 h-5" />
               <span className="font-medium">Back</span>
             </button>
